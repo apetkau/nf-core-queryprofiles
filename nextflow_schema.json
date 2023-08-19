@@ -299,5 +299,19 @@
         {
             "$ref": "#/definitions/generic_options"
         }
-    ]
+    ],
+    "properties": {
+        "reference_profile": {
+            "type": "string",
+            "default": null
+        },
+        "query_profile": {
+            "type": "string",
+            "default": null
+        },
+        "match_threshold": {
+            "type": "string",
+            "default": null
+        }
+    }
 }
