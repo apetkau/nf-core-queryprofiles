@@ -35,7 +35,8 @@ ch_multiqc_custom_methods_description = params.multiqc_methods_description ? fil
 //
 // SUBWORKFLOW: Consisting of a mix of local and nf-core/modules
 //
-include { INPUT_CHECK } from '../subworkflows/local/input_check'
+include { INPUT_CHECK   } from '../subworkflows/local/input_check'
+include { PROFILE_DISTS } from '../modules/local/profile_dists/main'
 
 /*
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -81,6 +82,12 @@ workflow QUERYPROFILES {
         INPUT_CHECK.out.reads
     )
     ch_versions = ch_versions.mix(FASTQC.out.versions.first())
+
+    PROFILE_DISTS (
+        reference_profile=file(params.reference_profile),
+        query_profile=file(params.query_profile)
+    )
+    ch_versions = ch_versions.mix(PROFILE_DISTS.out.versions.first())
 
     CUSTOM_DUMPSOFTWAREVERSIONS (
         ch_versions.unique().collectFile(name: 'collated_versions.yml')

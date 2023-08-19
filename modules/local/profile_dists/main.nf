@@ -4,7 +4,8 @@ process PROFILE_DISTS {
     container 'profile_dists:latest'
 
     input:
-    path(samples_profile)
+    path(query_profile)
+    path(reference_profile)
 
     output:
     path ("results/allele_map.json")   , emit: allele_map_json
@@ -21,8 +22,8 @@ process PROFILE_DISTS {
     def prefix = task.ext.prefix
     """
     profile_dists \\
-        --query $samples_profile \\
-        --ref $samples_profile \\
+        --query $query_profile \\
+        --ref $reference_profile \\
         $args \\
         --force \\
         --cpus $task.cpus \\
