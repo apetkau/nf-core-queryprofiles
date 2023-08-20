@@ -11,9 +11,9 @@ nextflow run https://github.com/apetkau/nf-core-queryprofiles -profile docker,te
 Or, if you wish to use your own data:
 
 ```bash
-nextflow run https://github.com/apetkau/nf-core-queryprofiles -r dev -profile docker --match_threshold '10' --reference_profile reference_profiles.tsv --query_profile query_profiles.tsv --outdir results --input 'https://raw.githubusercontent.com/nf-core/test-datasets/viralrecon/samplesheet/samplesheet_test_illumina_amplicon.csv'
+nextflow run https://github.com/apetkau/nf-core-queryprofiles -r dev -profile docker --match_threshold 10 --reference_profile reference_profiles.tsv --query_profile query_profiles.tsv --outdir results --input 'https://raw.githubusercontent.com/nf-core/test-datasets/viralrecon/samplesheet/samplesheet_test_illumina_amplicon.csv'
 ```
 
-Note, that the parameter of `--input` is not used right now now, but is only there until this is fixed to be used to pass the actual input data using this parameter. Also, `--match_threshold` must be a string right now (another issue to fix).
+Note, that the parameter of `--input` is not used right now now, but is only there until this is fixed to be used to pass the actual input data using this parameter.
 
 Output for profile distances will be in `results/profile/results`.
