@@ -310,7 +310,7 @@
             "default": null
         },
         "match_threshold": {
-            "type": "string",
+            "type": "integer",
             "default": null
         }
     }
