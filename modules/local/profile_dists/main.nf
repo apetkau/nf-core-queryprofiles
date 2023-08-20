@@ -1,7 +1,7 @@
 process PROFILE_DISTS {
     label 'process_single'
 
-    container 'profile_dists:latest'
+    container 'docker.io/apetkau/profile_dists:latest'
 
     input:
     path(query_profile)
